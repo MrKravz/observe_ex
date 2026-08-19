@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Оставляем стандартный вывод логов в консоль IDE -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- Настраиваем отправку в Loki -->
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <!-- Так как Spring Boot запущен локально, обращаемся к localhost -->
+            <url>http://localhost:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <!-- Эти метки (labels) помогут фильтровать логи в Grafana -->
+                <!-- Самое важное: мы добавляем traceId в метки! -->
+                <pattern>app=observ_ex,host=${HOSTNAME},traceId=%X{traceId:-NONE}</pattern>
+            </label>
+            <message>
+                <!-- Формат самого сообщения лога -->
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%X{traceId},%X{spanId}] - %msg%n</pattern>
+            </message>
+        </format>
+    </appender>
+
+    <!-- Подключаем аппендер к корневому логгеру -->
+    <root level="INFO">
+        <appender-ref ref="LOKI" />
+    </root>
+</configuration>
