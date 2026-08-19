@@ -1,0 +1,16 @@
+name: CI pipeline
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+  run-shared-ci:
+    uses: MrKravz/shared-ci-workflows/.github/workflows/ci.yaml@main
+    with:
+      build-tool: 'maven'
+      java-version: '17'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
