@@ -11,10 +11,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Table(name = "to_dos")
 public class ToDo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(name = "description")
-    private String desc;
+  @Column(name = "description")
+  private String desc;
 }

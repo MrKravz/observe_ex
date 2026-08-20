@@ -17,15 +17,11 @@ import org.testcontainers.utility.DockerImageName;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class AbstractIntegrationTest {
 
-    @Autowired
-    protected MockMvc mockMvc;
+  @Autowired protected MockMvc mockMvc;
 
-    @Autowired
-    protected ObjectMapper objectMapper;
+  @Autowired protected ObjectMapper objectMapper;
 
-    @ServiceConnection
-    public static final PostgreSQLContainer<?> postgresContainer =
-            new PostgreSQLContainer<>(DockerImageName.parse("postgres:15"));
-
-
+  @ServiceConnection
+  public static final PostgreSQLContainer<?> postgresContainer =
+      new PostgreSQLContainer<>(DockerImageName.parse("postgres:15"));
 }
