@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-shared-ci:
-    uses: MrKravz/shared-ci-workflows/.github/workflows/ci.yml@main
+    uses: MrKravz/shared-ci-workflows/.github/workflows/ci.yaml@main
     with:
       build-tool: 'maven'
       working-directory: 'observ_ex'
