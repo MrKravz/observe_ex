@@ -18,6 +18,7 @@
 		<java.version>17</java.version>
 		<datasource-micrometer.version>1.4.1</datasource-micrometer.version>
 		<testcontainers.version>1.19.8</testcontainers.version>
+		<jacoco.version>0.8.12</jacoco.version>
 	</properties>
 
 	<dependencyManagement>
@@ -33,9 +34,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- ========================== -->
-		<!-- БАЗОВЫЕ СТАРТЕРЫ SPRING    -->
-		<!-- ========================== -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -132,6 +130,25 @@
 						<removeUnusedImports/>
 					</java>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
