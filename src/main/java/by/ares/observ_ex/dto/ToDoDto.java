@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ToDoDto {
-    private Long id;
-    private String desc;
+  private Long id;
+  private String desc;
 }

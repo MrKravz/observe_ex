@@ -1,0 +1,15 @@
+#!/bin/sh
+echo " Запуск pre-commit проверок (Spotless)..."
+
+./mvnw spotless:check
+
+if [ $? -ne 0 ]; then
+  echo " Ошибка: Код не соответствует стилю оформления."
+  echo " Выполни следующие шаги:"
+  echo "  1. Запусти './mvnw spotless:apply' для автоисправления."
+  echo "  2. Добавь исправленные файлы через 'git add .'"
+  echo "  3. Повтори команду 'git commit'."
+  exit 1
+fi
+
+echo "✅ Код чистый! Создаю коммит..."

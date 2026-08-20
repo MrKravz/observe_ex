@@ -6,5 +6,5 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class ToDoRequest {
-    private final String desc;
+  private final String desc;
 }
